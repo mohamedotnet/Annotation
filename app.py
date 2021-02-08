@@ -23,33 +23,11 @@ db = MongoEngine(app)
 api.add_resource(LabelAPI, '/annotation/api/v1.0/createlabel/', endpoint='createlabel')
 api.add_resource(LabelListAPI, '/annotation/api/v1.0/labels', endpoint='labels')
 
-labels = {}
-
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
-
-"""
-@app.route('/publish', methods=['POST', 'GET'])
-def publish():
-    if request.method == 'POST':
-        # shape = flask.request.json
-        label = Label(label=request.json['label'], shape=geojson.loads(request.json['shape']))
-        print(type(label.shape))
-        # dirty way to force store
-        label.save(validate=False)
-
-        return render_template('index.html')
-    else:
-        return render_template('index.html')
-
-
-@app.route('/welcome')
-def welcome():
-    return "ow"
-"""
 
 if __name__ == '__main__':
     app.run()
